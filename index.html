@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>딩기요트 권리정 시뮬레이터 | 바람 방향과 보트 위치로 쉽게 배우기</title>
+    <meta
+      name="description"
+      content="딩기요트 기본 용어와 포트·스타보드·풍상·풍하·클리어 어헤드 권리정을 인터랙티브 그림으로 배우는 정적 웹사이트입니다."
+    />
+    <meta name="theme-color" content="#0b4751" />
+    <meta property="og:title" content="딩기요트 권리정 시뮬레이터" />
+    <meta property="og:description" content="바람 방향과 보트 위치를 바꾸면 권리정이 색상으로 표시됩니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/hero-dinghy.png" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="preload" href="assets/hero-dinghy.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#simulator" data-i18n="skip">시뮬레이터로 이동</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="딩기요트 권리정 홈">
+        <span class="brand-mark">D</span>
+        <span data-i18n="brand">딩기 권리정</span>
+      </a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#basics" data-i18n="navBasics">기본</a>
+        <a href="#simulator" data-i18n="navSimulator">시뮬레이터</a>
+        <a href="#rules" data-i18n="navRules">룰 10-18</a>
+        <a href="https://yachtrules.blogspot.com/" target="_blank" rel="noreferrer" data-i18n="navGuide">규칙 가이드</a>
+      </nav>
+      <label class="language-select">
+        <span data-i18n="language">언어</span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-image" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">dinghy sailing · right of way</p>
+            <h1 data-i18n="heroTitle">바람과 보트 위치를 바꾸면 권리정이 바로 보입니다.</h1>
+            <p class="hero-lede" data-i18n="heroLead">
+              딩기요트를 처음 배우는 사람도 포트/스타보드, 풍상/풍하, 클리어 어헤드 상황을 색상과 그림으로 이해할 수 있게 만든 정적 학습 도구입니다.
+            </p>
+            <a class="primary-link" href="#simulator" data-i18n="heroCta">직접 배치해보기</a>
+          </div>
+          <aside class="hero-card">
+            <span data-i18n="colorPromise">색상 약속</span>
+            <strong><span class="dot green"></span><span data-i18n="greenMeaning">초록 = 권리정</span></strong>
+            <strong><span class="dot red"></span><span data-i18n="redMeaning">빨강 = 피항정</span></strong>
+            <small data-i18n="heroScope">룰 10-18의 기본 상황과 제한을 단순화해 표시합니다.</small>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-inner" id="basics">
+        <div class="section-heading">
+          <p class="eyebrow dark">visual basics</p>
+          <h2 data-i18n="basicsTitle">그림으로 먼저 잡는 딩기요트 기본</h2>
+          <p data-i18n="basicsLead">권리정은 “누가 무조건 이긴다”가 아니라, 충돌을 피하기 위해 누가 먼저 행동해야 하는지를 정하는 규칙입니다.</p>
+        </div>
+
+        <div class="diagram-grid">
+          <article class="diagram-card">
+            <svg viewBox="0 0 220 150" aria-hidden="true">
+              <path class="water-line" d="M18 118 C54 106 87 130 124 118 S182 108 206 120" />
+              <path class="hull" d="M70 94 L142 94 L128 112 L84 112 Z" />
+              <path class="mast" d="M106 34 L106 98" />
+              <path class="sail-main" d="M108 38 C144 56 154 78 132 98 L108 98 Z" />
+              <path class="sail-jib" d="M103 48 L78 94 L103 94 Z" />
+              <circle class="label-dot" cx="106" cy="94" r="4" />
+            </svg>
+            <h3 data-i18n="boatDirectionTitle">보트의 방향</h3>
+            <p data-i18n="boatDirectionText">뱃머리가 향하는 방향과 바람이 불어오는 방향의 관계로 택이 결정됩니다.</p>
+          </article>
+
+          <article class="diagram-card">
+            <svg viewBox="0 0 220 150" aria-hidden="true">
+              <path class="wind-arrow" d="M184 32 L88 86" />
+              <path class="wind-arrow-head" d="M88 86 L102 64 M88 86 L114 88" />
+              <path class="boat-mini starboard" d="M100 100 L122 80 L144 100 L122 116 Z" />
+              <text x="142" y="45" data-i18n-svg="windLabel">바람</text>
+            </svg>
+            <h3 data-i18n="starboardTitle">스타보드 택</h3>
+            <p data-i18n="starboardText">바람이 오른쪽, 즉 스타보드 쪽에서 오면 스타보드 택입니다.</p>
+          </article>
+
+          <article class="diagram-card">
+            <svg viewBox="0 0 220 150" aria-hidden="true">
+              <path class="wind-arrow" d="M36 34 L128 88" />
+              <path class="wind-arrow-head" d="M128 88 L101 86 M128 88 L113 66" />
+              <path class="boat-mini port" d="M100 100 L122 80 L144 100 L122 116 Z" />
+              <text x="34" y="45" data-i18n-svg="windLabel">바람</text>
+            </svg>
+            <h3 data-i18n="portTitle">포트 택</h3>
+            <p data-i18n="portText">바람이 왼쪽, 즉 포트 쪽에서 오면 포트 택입니다.</p>
+          </article>
+
+          <article class="diagram-card">
+            <svg viewBox="0 0 220 150" aria-hidden="true">
+              <path class="wind-arrow" d="M30 28 L30 106" />
+              <path class="wind-arrow-head" d="M30 106 L18 84 M30 106 L42 84" />
+              <path class="boat-mini leeward" d="M118 102 L140 82 L162 102 L140 118 Z" />
+              <path class="boat-mini windward" d="M76 72 L98 52 L120 72 L98 88 Z" />
+              <text x="112" y="46" data-i18n-svg="windwardLabel">풍상</text>
+              <text x="150" y="132" data-i18n-svg="leewardLabel">풍하</text>
+            </svg>
+            <h3 data-i18n="windwardLeewardTitle">풍상과 풍하</h3>
+            <p data-i18n="windwardLeewardText">같은 택에서 겹쳐 있으면 풍하 보트가 권리정입니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sim-band" id="simulator">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow dark">interactive simulator</p>
+            <h2 data-i18n="simTitle">권리정 시뮬레이터</h2>
+            <p data-i18n="simLead">보트를 드래그하고 A/B 카드에서 방향이나 3초 뒤 태킹을 선택하면 권리정 변화가 바로 표시됩니다.</p>
+          </div>
+
+          <div class="sim-layout">
+            <section class="canvas-card">
+              <canvas id="sailingCanvas" width="960" height="620" aria-label="딩기요트 권리정 시뮬레이터"></canvas>
+              <div class="canvas-help">
+                <span data-i18n="dragHelp">드래그: 보트/마크 이동</span>
+                <span data-i18n="greenHelp">초록: 권리정</span>
+                <span data-i18n="markHelp">노란 원: 마크 3보트길이 존</span>
+              </div>
+            </section>
+
+            <aside class="control-card">
+              <div class="result-box" id="resultBox">
+                <span data-i18n="currentDecision">현재 판정</span>
+                <strong id="winnerText">A가 권리정</strong>
+                <p id="reasonText">RRS 제10조: 반대 택에서는 포트 택 보트가 스타보드 택 보트를 피해야 합니다.</p>
+              </div>
+
+              <div class="dial-stack" aria-label="회전 조작">
+                <section class="dial-card wind-card">
+                  <div class="dial-head">
+                    <h3 data-i18n="windControlTitle">바람</h3>
+                    <strong id="windValue">0°</strong>
+                  </div>
+                  <div class="dial" data-dial="wind" role="slider" tabindex="0" aria-valuemin="-9999" aria-valuemax="9999" aria-valuenow="0" aria-label="Wind direction">
+                    <div class="dial-ring"><div class="dial-pointer"></div><div class="dial-knob"></div></div>
+                  </div>
+                  <small class="dial-hint" data-i18n="dialHint">다이얼을 잡고 돌리세요</small>
+                  <label class="angle-number compact">
+                    <span data-i18n="windFrom">바람이 불어오는 방향</span>
+                    <input id="windDir" type="number" step="1" value="0" />
+                  </label>
+                  <div class="quick-spin">
+                    <button type="button" data-adjust="wind" data-delta="-30">−30°</button>
+                    <button type="button" data-adjust="wind" data-delta="-5">−5°</button>
+                    <button type="button" data-adjust="wind" data-delta="5">+5°</button>
+                    <button type="button" data-adjust="wind" data-delta="30">+30°</button>
+                  </div>
+                </section>
+
+                <section class="dial-card boat-a">
+                  <div class="dial-head">
+                    <h3 data-i18n="boatA">보트 A</h3>
+                    <strong id="headingAValue">315°</strong>
+                  </div>
+                  <div class="dial" data-dial="A" role="slider" tabindex="0" aria-valuemin="-9999" aria-valuemax="9999" aria-valuenow="315" aria-label="Boat A heading">
+                    <div class="dial-ring"><div class="dial-pointer"></div><div class="dial-knob"></div></div>
+                  </div>
+                  <small class="dial-hint" data-i18n="dialHint">다이얼을 잡고 돌리세요</small>
+                  <label class="angle-number compact">
+                    <span data-i18n="heading">방향</span>
+                    <input id="headingA" type="number" step="1" value="315" />
+                  </label>
+                  <div class="quick-spin">
+                    <button type="button" data-adjust="A" data-delta="-30">−30°</button>
+                    <button type="button" data-adjust="A" data-delta="-5">−5°</button>
+                    <button type="button" data-adjust="A" data-delta="5">+5°</button>
+                    <button type="button" data-adjust="A" data-delta="30">+30°</button>
+                  </div>
+                  <div class="boat-action-row">
+                    <label class="check-line compact-check"><input id="tackingA" type="checkbox" /> <span data-i18n="manualTacking">직접 태킹 상태</span></label>
+                    <div class="tack-buttons">
+                      <button type="button" data-schedule-tack="A" data-direction="-1"><span aria-hidden="true">↺</span><span data-i18n="tackLeftAfter3">3초 뒤 좌태킹</span></button>
+                      <button type="button" data-schedule-tack="A" data-direction="1"><span aria-hidden="true">↻</span><span data-i18n="tackRightAfter3">3초 뒤 우태킹</span></button>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="dial-card boat-b">
+                  <div class="dial-head">
+                    <h3 data-i18n="boatB">보트 B</h3>
+                    <strong id="headingBValue">45°</strong>
+                  </div>
+                  <div class="dial" data-dial="B" role="slider" tabindex="0" aria-valuemin="-9999" aria-valuemax="9999" aria-valuenow="45" aria-label="Boat B heading">
+                    <div class="dial-ring"><div class="dial-pointer"></div><div class="dial-knob"></div></div>
+                  </div>
+                  <small class="dial-hint" data-i18n="dialHint">다이얼을 잡고 돌리세요</small>
+                  <label class="angle-number compact">
+                    <span data-i18n="heading">방향</span>
+                    <input id="headingB" type="number" step="1" value="45" />
+                  </label>
+                  <div class="quick-spin">
+                    <button type="button" data-adjust="B" data-delta="-30">−30°</button>
+                    <button type="button" data-adjust="B" data-delta="-5">−5°</button>
+                    <button type="button" data-adjust="B" data-delta="5">+5°</button>
+                    <button type="button" data-adjust="B" data-delta="30">+30°</button>
+                  </div>
+                  <div class="boat-action-row">
+                    <label class="check-line compact-check"><input id="tackingB" type="checkbox" /> <span data-i18n="manualTacking">직접 태킹 상태</span></label>
+                    <div class="tack-buttons">
+                      <button type="button" data-schedule-tack="B" data-direction="-1"><span aria-hidden="true">↺</span><span data-i18n="tackLeftAfter3">3초 뒤 좌태킹</span></button>
+                      <button type="button" data-schedule-tack="B" data-direction="1"><span aria-hidden="true">↻</span><span data-i18n="tackRightAfter3">3초 뒤 우태킹</span></button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <section class="simulation-panel">
+                <div class="simulation-head">
+                  <h3 data-i18n="simTackTitle">태킹 진행</h3>
+                  <span id="simCountdown" class="count-badge">대기</span>
+                </div>
+                <p class="sim-status" id="simStatus" aria-live="polite">대기 중입니다.</p>
+                <button type="button" class="secondary-button stop-simulation" id="cancelTackSim" data-i18n="cancelTackSim">중지</button>
+                <details class="timeline-box">
+                  <summary data-i18n="simTimelineLabel">판정 변화</summary>
+                  <ol id="simTimeline" class="timeline-log"></ol>
+                </details>
+              </section>
+
+              <section class="mark-panel">
+                <h3 data-i18n="markControlTitle">마크</h3>
+                <label class="check-line"><input id="markEnabled" type="checkbox" /> <span data-i18n="showMark">마크 표시</span></label>
+                <p class="fixed-zone-note" data-i18n="fixedMarkZone">공식 마크 존 기준은 3보트길이입니다. 화면 연습용으로만 더 크게 표시할 수 있습니다.</p>
+                <label class="range-line">
+                  <span data-i18n="markZoneSizeLabel">표시용 마크룸 크기</span>
+                  <strong id="markZoneValue">3.0보트길이</strong>
+                  <input id="markZoneSize" type="range" min="3" max="8" step="0.5" value="3" />
+                </label>
+                <div class="mark-buttons">
+                  <button type="button" class="secondary-button" id="resetMarkZone" data-i18n="resetMarkZone">3보트길이로</button>
+                  <button type="button" class="secondary-button" id="resetMark" data-i18n="resetMark">마크 가운데로</button>
+                </div>
+              </section>
+
+              <div class="preset-grid">
+                <button type="button" data-preset="opposite" data-i18n="presetOpposite">포트 vs 스타보드</button>
+                <button type="button" data-preset="leeward" data-i18n="presetLeeward">풍상/풍하</button>
+                <button type="button" data-preset="clear" data-i18n="presetClear">클리어 어헤드</button>
+                <button type="button" data-preset="tacking" data-i18n="presetTacking">태킹 중</button>
+                <button type="button" data-preset="mark" data-i18n="presetMark">마크 접근</button>
+              </div>
+
+              <dl class="state-list">
+                <div><dt data-i18n="stateALabel">A 상태</dt><dd id="stateA">스타보드 택</dd></div>
+                <div><dt data-i18n="stateBLabel">B 상태</dt><dd id="stateB">포트 택</dd></div>
+                <div><dt data-i18n="relationLabel">관계</dt><dd id="relationText">반대 택</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="reason-card">
+            <div>
+              <p class="eyebrow dark">decision details</p>
+              <h3 data-i18n="whyTitle">왜 그렇게 판정하나요?</h3>
+              <p id="longReasonText">RRS 제10조: 반대 택에서는 포트 택 보트가 스타보드 택 보트를 피해야 합니다.</p>
+            </div>
+            <ul id="reasonList"></ul>
+            <div class="obligation-block">
+              <h4 data-i18n="limitsTitle">함께 적용되는 기본 제한</h4>
+              <ul id="obligationList"></ul>
+            </div>
+            <p id="markReason" class="mark-reason"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-inner" id="rules">
+        <div class="section-heading">
+          <p class="eyebrow dark">rules 10-18 simplified</p>
+          <h2 data-i18n="rulesTitle">이 도구가 판정하는 기본 규칙</h2>
+          <p data-i18n="rulesLead">World Sailing Racing Rules of Sailing 2025-2028의 룰 10-18을 모바일 학습용으로 단순화했습니다.</p>
+        </div>
+        <div class="rule-grid">
+          <article><span>RRS 10</span><h3 data-i18n="rule10Title">반대 택</h3><p data-i18n="rule10Text">포트 택 보트는 스타보드 택 보트를 피해야 합니다.</p></article>
+          <article><span>RRS 11</span><h3 data-i18n="rule11Title">같은 택, 겹침</h3><p data-i18n="rule11Text">풍상 보트는 풍하 보트를 피해야 합니다.</p></article>
+          <article><span>RRS 12</span><h3 data-i18n="rule12Title">같은 택, 비겹침</h3><p data-i18n="rule12Text">클리어 어스턴 보트는 클리어 어헤드 보트를 피해야 합니다.</p></article>
+          <article><span>RRS 13</span><h3 data-i18n="rule13Title">태킹 중</h3><p data-i18n="rule13Text">태킹 중인 보트는 태킹하지 않는 보트를 피해야 합니다.</p></article>
+          <article><span>RRS 14</span><h3 data-i18n="rule14Title">접촉 피하기</h3><p data-i18n="rule14Text">권리정과 피항정 모두 가능한 범위에서 접촉을 피해야 합니다.</p></article>
+          <article><span>RRS 15</span><h3 data-i18n="rule15Title">새 권리정</h3><p data-i18n="rule15Text">새로 권리정을 얻은 보트는 처음에 상대가 피할 공간을 줘야 합니다.</p></article>
+          <article><span>RRS 16</span><h3 data-i18n="rule16Title">코스 변경</h3><p data-i18n="rule16Text">권리정이 방향을 바꿀 때에도 상대가 피할 공간을 줘야 합니다.</p></article>
+          <article><span>RRS 17</span><h3 data-i18n="rule17Title">프로퍼 코스</h3><p data-i18n="rule17Text">특정 방식으로 풍하 겹침을 만든 보트에는 프로퍼 코스 제한이 생길 수 있습니다.</p></article>
+          <article><span>RRS 18</span><h3 data-i18n="rule18Title">마크 룸</h3><p data-i18n="rule18Text">마크 주변에서는 권리정과 별도로 마크룸이 추가로 검토될 수 있습니다. 이 도구는 마크 존을 표시하고 주의 문구를 제공합니다.</p></article>
+        </div>
+        <p class="scope-note" data-i18n="scopeNote">
+          범위 밖: 마크룸의 완전한 판정, 룰 17의 겹침 형성 이력, 장애물, 룸 투 택, 출발 전후 특수 상황, 팀레이싱, 실제 충돌 회피 판단. 실제 경기에서는 최신 RRS 원문과 코치·심판 설명을 우선하세요.
+        </p>
+      </section>
+
+      <section class="guide-band">
+        <div>
+          <p class="eyebrow" data-i18n="guideEyebrow">free rule guide</p>
+          <h2 data-i18n="guideTitle">상황별 설명은 Yacht Rules 가이드에서 이어집니다.</h2>
+          <p data-i18n="guideText">룰 10부터 18까지 초보자가 자주 헷갈리는 장면을 한국어로 차근차근 정리했습니다.</p>
+        </div>
+        <a class="primary-link light-link" href="https://yachtrules.blogspot.com/" target="_blank" rel="noreferrer" data-i18n="guideCta">무료 가이드 보기</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer">© <span id="year"></span> 딩기 권리정. 교육용 단순화 도구입니다.</p>
+      <nav class="footer-links" aria-label="사이트 정보">
+        <a href="https://yachtrules.blogspot.com/" target="_blank" rel="noreferrer" data-i18n="footerGuide">규칙 가이드</a>
+        <a href="about.html" data-i18n="footerAbout">소개</a>
+        <a href="privacy.html" data-i18n="footerPrivacy">개인정보</a>
+        <a href="disclaimer.html" data-i18n="footerDisclaimer">면책</a>
+        <a href="https://www.sailing.org/inside-worldsailing/rules-regulations/racingrules/" target="_blank" rel="noreferrer">World Sailing RRS</a>
+      </nav>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
